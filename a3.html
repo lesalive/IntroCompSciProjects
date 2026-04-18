@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <h1>Assignment 3: Animation</h1>
+    <canvas id="myCanvas"></canvas>
+
+    <h2>Documentation:</h2>
+    <a href="a3v2.js">1. set up, rectangle with rotation and colour</a>
+    <p>Using functions from the class modules.</p>
+    <a href="a3v3.js">2. sky with changing hue</a>
+    <p>Added animation loop. Used bg object to store hue and an index counter. Oscillated hue of sky using sine function = 175+80*sin(x+1)/2; replace x with bg.index in degrees as input; 175 mininal hue up to 255.</p>
+    <a href="a3v4.js">3. animating many shapes falling down</a>
+    <p>Added a createData function to push objects to the groupSnow array. Animated snow in animation loop falling down by updating properties. Added statement to remove if invisible, and another to inverse change.rd (randomness) if out of bounds</p>
+    <a href="a3v5.js">4. snow resets to top after falling, alpha fades out after 10 seconds</a>
+    <p>Added respawn function to reset position; if object leaves canvas from the bottom, reset y; if leaves from side, reset x and y. Alpha of snow is -1/(60*10) because the animation is 60fps.</p>
+    <a href="a3v6.js">5. added cloud shape function</a>
+    <p>I drew the circles in Desmos first to figure a cloud shape, the equations are commented. The circles fill differently depending on the order they're placed, sometimes containing unfilled jumping gaps. I had to figure out an order which didn't cause any filling issues.</p>
+    <a href="a3v7.js">6. horizontal moving clouds, setTimeout on snow delay start, bg alpha fades in</a>
+    <p>Added 5 clouds to animate aross the top of the screen, created a different respawn function for the clouds. Added setTimeout and an if statement to only add the snow if the condition is true.</p>
+    <a href="a3v8.js">7. snow fades in and increases before decreasing and fading out; clouds size and value variety and alpha fade</a>
+    <p>Added more setTimeout's to change alpha values to make objects fade in or out. Tried a reciporal function to clouds alpha to make it fade out because I was lazy to add another setTimeout; also tried 1-1/144(x-12)^2 with x=bg.index/60 to make it fade in then out but it didn't work.</p>
+    <a href="a3.html">Final. adjusted timing, added fireworks at intervals as timer</a>
+    <p>Made the clouds properly fade in and out. Added setInterval to update fireworkTimer every 4 seconds, it serves as a counter and stops at 6. The firework animation plays if the number is odd. Adjusted some values so the timing of first and last firework line up with beginning of snow and fade out of clouds.</p>
+    <script src="a3.js"></script>
+</body>
+</html>
