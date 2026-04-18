@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1: Shape Builder</title>
+</head>
+<body>
+    <h1>Assignment 1: Shape Builder Fire Starter</h1>
+    <h2>Let's play!</h2>
+    <button onclick="drawBg()">Add building!</button>
+    <button onclick="clearCanvas()">Clear board</button>
+    <button onclick="drawGrid()">Add gridlines</button>
+    <br>
+    <canvas id="myCanvas"></canvas>
+    <br>
+    <label for="inputy">Target Floor:</label>
+    <input type="number" id="inputy" min="0" max="5" step="1" value="1">
+    <label for="inputx">Location:</label>
+    <input type="number" id="inputx" min="0" max="7" step="1" value="6">
+    <button onclick="drawFire()">Set Fire</button>
+    <br>
+    <label for="inputgas">Gas:</label>
+    <input type="range" id="inputgas" min="15" max="30" step="1" value="15">
+
+    <h2>Ilterations:</h2>
+    <a href="a1v1.js">1. Adding canvas and background</a><br>
+    <a href="a1v2.js">2. Drawing a fire shape</a><br>
+    <a href="a1v3.js">3. Looping the fire with colours</a><br>
+    <a href="a1v4.js">4. Fire jitter and reversing floor height</a><br>
+    <a href="a1v5.js">5. Building takes location input to have variable height and width</a>
+    <a href="a1v6.js">6. Building x offset, clear canvas when 48+ fires</a>
+    <h2>Citations:</h2>
+    <a href="https://www.w3schools.com/tags/canvas_quadraticcurveto.asp">To draw a quadratic Bézier curve</a><br>
+    <a href="https://www.w3schools.com/programming/prog_loops.php">Understanding Loops, implemented loop to simplify drawings</a><br>
+    <a href="https://www.w3schools.com/js/js_arrays.asp">Using Arrays</a><br>
+    <a href="https://www.w3schools.com/tags/canvas_stroketext.asp">To draw text on the canvas</a><br>
+    <script src="a1.js"></script>
+</body>
+</html>
