@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Art</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <h1>Interactive Art Garden</h1>
+    <canvas id="myCanvas"></canvas>
+    <h2>Instructions:</h2>
+    <p>Bees and rain make flowers grow!</p>
+    <p>Click and move the cursor around for the bee to follow.</p>
+    <p>Press 'c' to spawn a cloud.</p>
+    <p>Use arrow keys to create a gust of wind.</p>
+    <p>Move your cursor near the ground to change the color of the flowers. </p>
+    <p>Click on the stats to change the color of the bees or flowers.</p>
+    <p>Space bar to pause the game. 'X' to clear the paint and score.</p>
+
+    <h2>Documentation:</h2>
+    <a href="a4v1.js">1. Setup</a>
+    <p>setting up the canvas and functions from the course</p>
+    <a href="a4v2.js">2. First flower</a>
+    <p>added a function to draw a basic flower; in mousemove: moving the cursor on the lower portion of the canvas changes the flower color depending on the x cord of the cursor</p>
+    <a href="a4v3.js">3. Flower color and UI</a>
+    <p>intervalFlr pushes a new flower every 2s except if there's 12+ flowers; flower color changes depending on x cord of cursor plus the flower so that the colors are a rainbow</p>
+    <p>added uiDisplay that draws a text showing state.iris which switches from true to false if the bounding rectangle is clicked; the flower color will add a value to make all flowers a rainbow if state.iris is true, otherwise all flowers will be the same color</p>
+    <a href="a4v4.js">4. Cursor bee</a>
+    <p>added wiggling bee that follows cursor when its pressed down</p>
+    <a href="a4v5.js">5. Bee trail</a>
+    <p>intervalBeeTrail uses createBeeTrail() to add a new obj to beeTrail array every 200ms; added code in the animationLoop to draw the beeTrail using circle, update properties of each 'pollen', and remove when faded out</p>
+    <a href="a4v6.js">6. Flower grows and ripens</a>
+    <p>created detectOnFlower(), moving the bee over the flower head increases its height & size; ripe() detects if a flower reaches a certain size, then removes it; moved splat from my A2</p>
+    <a href="a4v7.js">7. Splats</a>
+    <p>when the flower ripens, a splat is added</p>
+    <a href="a4v8.js">8. Passive growth, and small bee</a>
+    <p>setInterval that makes flowers grow in height; added smaller bee 'pollinator' that wiggles across the screen using angle movement</p>
+    <a href="a4v9.js">9. Pollinators and wind</a>
+    <p>small bees grow flowers too; up to 20 small bees of different beecolors will spawn; arrows blow the pollinators</p>
+    <a href="a4v10.js">10. Big bee affected by wind; cloud</a>
+    <p>put the big bee object in the array of all the pollinators so it'll be affected by arrows; added a moving cloud</p>
+    <a href="a4v11.js">11. The cloud rains prototype</a>
+    <p>if cloud has been clicked, rainCloud() pushes an object to the rainParticles array which will be drawn; I don't know why the cloud is starting raining, I will fix this later, also change the rain bounce to be more realistic, and make the cloud fade out and die</p>
+    <a href="a4v12.js">12. Cloud fades out after clicked using hexcode</a>
+    <p>fixed "||" to "&&" in rainCloud(), and "=" to "==" in if (cloudobj.on==true) in the animationLoop, nevermind removed this redundant statement since its checked before the function is called. Moved the cloud to draw after/ontop of the rain. made the cloud opacity fade out using hexcode because I previously deleted the alpha in rect() to only take a string; may change this later to percentage so it'll be easier to control the fade out.</p>
+    <a href="a4v13.js">13. Cloud fades out using alpha and is spliced after clicked; rain hitting ground animation improved</a>
+    <p>changed alpha of cloud to hsla. moved code for the rain from the animationLoop to ifRaining(), renamed rainCloud() to createRain(). made the rain fade out and bounce more realistic after hitting the ground with rainHit() by first setting the change of y to negative then the 2nd derivative / acceleration to a small positive number. moved cloud obj into an array, remove rain and clouds if invisible.</p>
+    <a href="a4v14.js">14. Rain makes flowers grow</a>
+    <p>detectOnFlowerGround() checks if the rain is on the ground of the flowers</p>
+    <a href="a4v15.js">15. Bee colors</a>
+    <p>pressing c makes a cloud spawn; updated code in click() to check if clicked within each cloud object of the allClouds array; arrows move clouds left/right too. flower starting color with hue instead of random number. beecolor using colorSets using state.bColor, change by clicking text display UI, updated how the color works in createPollinator() and bee()</p>
+    <a href="a4v16.js">16. Some changes and added pause state</a>
+    <p>rain particle condition changed from number of rainParticles to alpha of the cloud. flower size growth rate to reach the requires size at the height = (25-10)/(350*60)= 1/1400, I will add this value to the flower size change in intervalFlr and have intervalFGrowth update the size too so each flower should ripen before the height condition.</p>
+    <p>the bee follows the cursor without pressing down; removed mousedown function, renamed state.mousedown to state.follow which changes when clicked instead of pressed down.</p>
+    <p>added a pause state, if true the canvas is empty and only displays "PAUSED"</p>
+    <a href="https://javascript.plainenglish.io/how-to-prevent-the-pressing-of-the-space-bar-from-scrolling-the-page-with-javascript-3b370f415ed9">Link to resource on how to make space bar not scroll down</a>
+    <br><br>
+    <a href="a4.js">17. Final code</a>
+    <p>I put if (state.pause){}else to stop code from running when it's paused. Now the game stops but the canvas still displays what was before the pause. Updating properties is paused and new objects shouldn't be added. I keep the bees wiggle because it's aesthetic</p>
+    <a href="https://www.w3schools.com/tags/ref_colornames.asp">Link to list of color names</a>
+    <script src="a4.js"></script>
+
+</body>
+</html>
